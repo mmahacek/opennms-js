@@ -1,5 +1,7 @@
 /** @hidden */
-declare const Promise, require;
+declare const Promise;
+/** @hidden */
+declare const require;
 
 /** @hidden */
 // tslint:disable-next-line
@@ -44,21 +46,21 @@ export class MockHTTP23 extends AbstractHTTP {
       }
     }
 
-    throw new Error('Not yet implemented: GET ' + urlObj.toString());
+    return Promise.reject(new Error('Not yet implemented: GET ' + urlObj.toString()));
   }
 
   public put(url: string, options?: OnmsHTTPOptions): Promise<OnmsResult<any>> {
     const urlObj = new URI(url);
-    throw new Error('Not yet implemented: PUT ' + urlObj.toString());
+    return Promise.reject(new Error('Not yet implemented: PUT ' + urlObj.toString()));
   }
 
   public post(url: string, options?: OnmsHTTPOptions): Promise<OnmsResult<any>> {
     const urlObj = new URI(url);
-    throw new Error('Not yet implemented: POST ' + urlObj.toString());
+    return Promise.reject(new Error('Not yet implemented: POST ' + urlObj.toString()));
   }
 
   public httpDelete(url: string, options?: OnmsHTTPOptions): Promise<OnmsResult<any>> {
     const urlObj = new URI(url);
-    throw new Error('Not yet implemented: DELETE ' + urlObj.toString());
+    return Promise.reject(new Error('Not yet implemented: DELETE ' + urlObj.toString()));
   }
 }

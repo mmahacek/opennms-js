@@ -1,7 +1,8 @@
 var webpack = require('webpack');
 var path = require('path');
+var TerserPlugin = require('terser-webpack-plugin')
 var TypedocWebpackPlugin = require('typedoc-webpack-plugin');
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 var pkginfo = require('./package.json');
 
 var createVariants = require('parallel-webpack').createVariants;
@@ -116,11 +117,12 @@ function createConfig(options) {
     } else {
       console.log('minimizer exists:',myconf.optimization.minimizer);
     }
-    myconf.optimization.minimizer.push(new UglifyJsPlugin({
+    myconf.optimization.minimizer.push(new TerserPlugin({
       cache: true,
       parallel: true,
       sourceMap: true,
-      uglifyOptions: {
+      terserOptions: {
+        ecma: 5,
         mangle: {
           reserved: [ '$element', '$super', '$scope', '$uib', '$', 'jQuery', 'exports', 'require', 'angular', 'c3', 'd3' ]
         },
