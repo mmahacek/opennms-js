@@ -30,9 +30,10 @@ export class OnmsIpInterface implements IHasUrlValue {
   /** the SNMP primary status of the interface */
   public snmpPrimary: OnmsPrimaryType;
 
-  /** the SNMP interface ID associated with this interface */
+  /** the SNMP interface ID associated with this IP interface */
   public snmpInterfaceId: number;
 
+  /** the SNMP interface associated with this IP interface */
   public get snmpInterface() {
     if (this.node) {
       for (const iface of this.node.snmpInterfaces) {
@@ -44,7 +45,7 @@ export class OnmsIpInterface implements IHasUrlValue {
     return undefined;
   }
 
-  /** the node this interface is associated with */
+  /** the node associated with this IP interface */
   public node: any;
 
   /** the services on this interface */

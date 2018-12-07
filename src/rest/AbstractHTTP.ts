@@ -17,6 +17,7 @@ const xmlTransformer = new XmlTransformer();
 /** @hidden */
 const jsonTransformer = new JsonTransformer();
 
+/** @hidden */
 const OPTIONS_PROP = Symbol.for('options');
 
 /**
@@ -25,6 +26,7 @@ const OPTIONS_PROP = Symbol.for('options');
  * @implements IOnmsHTTP
  */
 export abstract class AbstractHTTP implements IOnmsHTTP {
+  /** (internal) storage for the `.options` property */
   private [OPTIONS_PROP] = new OnmsHTTPOptions();
 
   /** The default set of HTTP options associated with this ReST client. */

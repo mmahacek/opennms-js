@@ -48,8 +48,16 @@ export class OnmsHTTPOptions {
   /** HTTP data to be passed when POSTing */
   public data: any;
 
+  /**
+   * "global" timeout to use when not passed to a request
+   * @hidden
+   */
   private [TIMEOUT_PROP]: number;
 
+  /**
+   * "global" authentication configuration to use when not passed to a request
+   * @hidden
+   */
   private [AUTH_PROP]: OnmsAuthConfig;
 
   /**
@@ -80,6 +88,9 @@ export class OnmsHTTPOptions {
     return this;
   }
 
+  /**
+   * Convert these HTTP options to a JSON object.
+   */
   public toJSON(): object {
     const ret = Object.assign({}, this);
     if (this[TIMEOUT_PROP]) {
