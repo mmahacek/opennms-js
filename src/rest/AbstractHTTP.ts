@@ -1,5 +1,4 @@
-// tslint:disable-next-line
-/// <reference path="../../typings/index.d.ts" />
+import '../../typings/index.d.ts';
 
 import {IOnmsHTTP} from '../api/IOnmsHTTP';
 

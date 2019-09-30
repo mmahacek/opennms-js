@@ -77,13 +77,14 @@ export class Util {
    */
   public static insensitiveKey(key: string, search: { [key: string]: any }) {
     if (!key || !search) {
-      return;
+      return undefined;
     }
     for (const k in search) {
       if (k && k.toLowerCase() === key.toLowerCase()) {
         return k;
       }
     }
+    return undefined;
   }
 
   /**
@@ -93,7 +94,7 @@ export class Util {
    */
   public static insensitiveValue(key: string, search: { [key: string]: any }) {
     if (!key || !search) {
-      return;
+      return undefined;
     }
     const k = Util.insensitiveKey(key, search);
     return k ? search[k] : undefined;

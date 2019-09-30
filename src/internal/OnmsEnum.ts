@@ -56,7 +56,7 @@ export function forId(collection: any, id?: any) {
     for (const type in collection) {
       if (collection.hasOwnProperty(type)) {
         const collectionId = collection[type].id;
-        if (('' + collectionId) === ('' + id)) {
+        if ((String(collectionId)) === String(id)) {
           return collection[type];
         }
       }

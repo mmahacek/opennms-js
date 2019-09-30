@@ -1,4 +1,4 @@
-// @ts-ignore
+declare module 'version_compare';
 import * as VersionCompare from 'version_compare';
 
 /**

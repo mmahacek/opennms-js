@@ -38,9 +38,10 @@ export abstract class AbstractDAO<K, T> extends BaseDAO implements IValueProvide
    */
   public async getFilterProcessor(): Promise<IFilterProcessor> {
       switch (this.getApiVersion()) {
-          case 2:
-            const cache = await this.getPropertiesCache();
-            return new V2FilterProcessor(cache);
+          case 2: {
+              const cache = await this.getPropertiesCache();
+              return new V2FilterProcessor(cache);
+            }
           default:
             return Promise.resolve(new V1FilterProcessor());
       }
@@ -224,7 +225,7 @@ export abstract class AbstractDAO<K, T> extends BaseDAO implements IValueProvide
     const prop = new SearchProperty(this);
     prop.id = data.id;
     prop.name = data.name;
-    prop.orderBy = !!data.orderBy;
+    prop.orderBy = Boolean(data.orderBy);
     prop.type = SearchPropertyType.forId(data.type);
     prop.values = data.values;
     return prop;

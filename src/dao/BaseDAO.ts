@@ -42,10 +42,8 @@ export abstract class BaseDAO {
    *               conforming to the [[IHasHTTP]] interface (like a [[Client]]).
    */
   constructor(impl: IOnmsHTTP | IHasHTTP) {
-    if ((impl as IHasHTTP).http) {
-      impl = (impl as IHasHTTP).http;
-    }
-    this.httpImpl = impl as IOnmsHTTP;
+    const httpImpl = (impl as IHasHTTP).http ? (impl as IHasHTTP).http : impl;
+    this.httpImpl = httpImpl as IOnmsHTTP;
     this.serverImpl = this.httpImpl.server;
   }
 

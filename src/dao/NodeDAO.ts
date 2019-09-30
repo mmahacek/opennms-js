@@ -173,15 +173,13 @@ export class NodeDAO extends AbstractDAO<number, OnmsNode> {
   /** Given a node, get the IP interfaces for that node. */
   public async services(
     passedNode: number | OnmsNode,
-    ipInterface: string | OnmsIpInterface,
+    ipIf: string | OnmsIpInterface,
     filter?: Filter,
   ): Promise<OnmsMonitoredService[]> {
     const node = String(this.getNodeId(passedNode));
 
     return this.getOptions(filter).then((builder) => {
-        if (ipInterface instanceof OnmsIpInterface && ipInterface.ipAddress) {
-            ipInterface = ipInterface.ipAddress.address;
-        }
+        const ipInterface = (ipIf instanceof OnmsIpInterface && ipIf.ipAddress) ? ipIf.ipAddress.address : ipIf;
         const url = this.pathToNodesEndpoint() + '/' + node + '/ipinterfaces/' + ipInterface + '/services';
         return this.http.get(url, builder.build()).then((result) => {
             let data = result.data;

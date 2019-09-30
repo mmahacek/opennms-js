@@ -38,5 +38,6 @@ export class SearchProperty {
     if (this.id) {
       return this.valueProvider.findValues(this.id, options);
     }
+    return undefined;
   }
 }
